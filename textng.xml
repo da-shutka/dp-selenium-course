@@ -1,0 +1,23 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Task10_3browsers" parallel="none">
+    <test name="ChromeTest">
+        <parameter name="browser" value="chrome" />
+        <classes>
+            <class name="Task10" />
+        </classes>
+    </test>
+
+    <test name="FirefoxTest">
+        <parameter name="browser" value="firefox" />
+        <classes>
+            <class name="Task10" />
+        </classes>
+    </test>
+
+    <test name="IETest">
+        <parameter name="browser" value="ie" />
+        <classes>
+            <class name="Task10" />
+        </classes>
+    </test>
+</suite>
