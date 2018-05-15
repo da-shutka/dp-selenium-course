@@ -3,7 +3,6 @@ package Task19.app;
 import Task19.pages.ClientCartPage;
 import Task19.pages.ClientMainPage;
 import Task19.pages.ClientProductPage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -51,8 +50,8 @@ public class Application{
         int i=productsInCart.size();
         int k=0;
         while (i!=0){
-            WebElement cartProduct = driver.findElement(By.cssSelector("#box-checkout-cart .items li:nth-child(1)"));
-            WebElement tableRow = driver.findElement(By.xpath("//*[contains(@class,'dataTable')]//tr[2]//td[1][contains(text(),'" + uniqueProductsQty[k] + "')]/../td[2][contains(text(),'" + uniqueProductNames[k] + "')]/.."));
+            WebElement cartProduct = clientCartPage.getCurrentProduct();
+            WebElement tableRow = clientCartPage.getProductTableRow(uniqueProductsQty[k],uniqueProductNames[k]);
 
             if (i == productsInCart.size() && productsInCart.size()!=1){
                 try {clientCartPage.simpleRemove(cartProduct, tableRow); }

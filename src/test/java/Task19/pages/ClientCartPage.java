@@ -33,6 +33,16 @@ public class ClientCartPage extends Page {
         return uniqueProductQty;
     }
 
+    public WebElement getCurrentProduct(){
+        try{return driver.findElement(By.cssSelector("#box-checkout-cart .items li:nth-child(1)"));}
+        catch(Exception ex){throw ex;}
+    }
+
+    public WebElement getProductTableRow(int qty, String name){
+        try{return driver.findElement(By.xpath("//*[contains(@class,'dataTable')]//tr[2]//td[1][contains(text(),'" + qty + "')]/../td[2][contains(text(),'" + name + "')]/.."));}
+        catch(Exception ex){throw ex;}
+    }
+
     public void simpleRemove(WebElement product, WebElement row){
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#box-checkout-cart .items li:nth-child(1) button[name='remove_cart_item']")));
         removeAndCheckThatRemoved(product,row);
